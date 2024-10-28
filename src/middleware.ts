@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { authApi } from "./utils/auth";
+import { authApi } from "./remote/auth";
 
 export async function middleware(request: NextRequest) {
   const sessionToken = request.cookies.get("session-token");
