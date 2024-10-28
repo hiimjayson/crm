@@ -1,12 +1,14 @@
 import { api } from "./api";
 import { ApiResponse } from "./typings";
 
-interface User {
+export interface User {
   id: string;
   uNumbber: number;
+  email: string;
   name: string;
   team: string;
   role: string;
+  createdAt: string;
 }
 
 type UserListResponse = ApiResponse<User[]>;
