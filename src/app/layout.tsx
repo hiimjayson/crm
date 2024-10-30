@@ -29,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* login 페이지일 때는 SideBar 없이 children만 렌더링 */}
+          {children}
+        </Providers>
       </body>
     </html>
   );
