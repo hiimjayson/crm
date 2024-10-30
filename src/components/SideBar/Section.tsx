@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronUp } from "lucide-react";
 
 interface SectionProps {
   title: string;
@@ -17,7 +18,7 @@ export default function Section({ title, children }: SectionProps) {
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}
-        <ChevronUpIcon
+        <ChevronUp
           className={`h-4 w-4 transform transition-transform duration-200 ${
             isOpen ? "rotate-0" : "rotate-180"
           }`}
@@ -32,8 +33,4 @@ export default function Section({ title, children }: SectionProps) {
       </div>
     </div>
   );
-}
-
-function ChevronUpIcon(props: { className: string }) {
-  return <div {...props} />;
 }
