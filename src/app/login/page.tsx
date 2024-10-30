@@ -17,7 +17,7 @@ export default function LoginPage() {
               type="text"
               id="username"
               name="username"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-gray-900"
               required
             />
           </div>
@@ -32,7 +32,7 @@ export default function LoginPage() {
               type="password"
               id="password"
               name="password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3182F6]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#3182F6] text-gray-900"
               required
             />
           </div>
