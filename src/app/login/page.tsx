@@ -1,11 +1,37 @@
+"use client";
+
+import { authApi } from "@/remote/auth";
+import { setCookie } from "@/utils/cookies";
+import { useRouter } from "next/navigation";
+
 export default function LoginPage() {
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get("username") as string;
+    const password = formData.get("password") as string;
+
+    try {
+      const sessionToken = await authApi.login(username, password);
+      setCookie("session-token", sessionToken);
+      alert("로그인 성공");
+      router.replace("/");
+    } catch (e) {
+      console.log(e);
+      alert("로그인 실패");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h1 className="text-2xl font-bold text-center text-[#3182F6] mb-6">
           헤드헌팅 서치펌 인터널
         </h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="username"

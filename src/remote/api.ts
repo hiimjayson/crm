@@ -6,7 +6,10 @@ interface RequestOptions extends RequestInit {
   params?: Record<string, string>;
 }
 
-async function fetchWithAuth(url: string, options: RequestOptions = {}) {
+async function fetchWithAuth<T>(
+  url: string,
+  options: RequestOptions = {}
+): Promise<T> {
   const sessionToken = getCookie("session-token");
   const headers = new Headers(options.headers);
 
@@ -34,35 +37,37 @@ async function fetchWithAuth(url: string, options: RequestOptions = {}) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  return response.json();
+  return response.json() as Promise<T>;
 }
 
 export const api = {
-  get: (url: string, options: RequestOptions = {}) =>
-    fetchWithAuth(url, { ...options, method: "GET" }),
+  get: <T = unknown>(url: string, options: RequestOptions = {}): Promise<T> =>
+    fetchWithAuth<T>(url, { ...options, method: "GET" }),
 
-  post: (
+  post: <T = unknown>(
     url: string,
     data: Record<string, unknown>,
     options: RequestOptions = {}
-  ) =>
-    fetchWithAuth(url, {
+  ): Promise<T> =>
+    fetchWithAuth<T>(url, {
       ...options,
       method: "POST",
       body: JSON.stringify(data),
     }),
 
-  patch: (
+  patch: <T = unknown>(
     url: string,
     data: Record<string, unknown>,
     options: RequestOptions = {}
-  ) =>
-    fetchWithAuth(url, {
+  ): Promise<T> =>
+    fetchWithAuth<T>(url, {
       ...options,
       method: "PATCH",
       body: JSON.stringify(data),
     }),
 
-  delete: (url: string, options: RequestOptions = {}) =>
-    fetchWithAuth(url, { ...options, method: "DELETE" }),
+  delete: <T = unknown>(
+    url: string,
+    options: RequestOptions = {}
+  ): Promise<T> => fetchWithAuth<T>(url, { ...options, method: "DELETE" }),
 };
