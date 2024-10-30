@@ -8,9 +8,10 @@ interface RequestOptions extends RequestInit {
 
 async function fetchWithAuth<T>(
   url: string,
-  options: RequestOptions = {}
+  options: RequestOptions = {},
+  externalToken?: string
 ): Promise<T> {
-  const sessionToken = getCookie("session-token");
+  const sessionToken = externalToken ?? getCookie("session-token");
   const headers = new Headers(options.headers);
 
   if (sessionToken) {
@@ -41,33 +42,48 @@ async function fetchWithAuth<T>(
 }
 
 export const api = {
-  get: <T = unknown>(url: string, options: RequestOptions = {}): Promise<T> =>
-    fetchWithAuth<T>(url, { ...options, method: "GET" }),
+  get: <T = unknown>(
+    url: string,
+    options: RequestOptions = {},
+    token?: string
+  ): Promise<T> => fetchWithAuth<T>(url, { ...options, method: "GET" }, token),
 
   post: <T = unknown>(
     url: string,
     data: Record<string, unknown>,
-    options: RequestOptions = {}
+    options: RequestOptions = {},
+    token?: string
   ): Promise<T> =>
-    fetchWithAuth<T>(url, {
-      ...options,
-      method: "POST",
-      body: JSON.stringify(data),
-    }),
+    fetchWithAuth<T>(
+      url,
+      {
+        ...options,
+        method: "POST",
+        body: JSON.stringify(data),
+      },
+      token
+    ),
 
   patch: <T = unknown>(
     url: string,
     data: Record<string, unknown>,
-    options: RequestOptions = {}
+    options: RequestOptions = {},
+    token?: string
   ): Promise<T> =>
-    fetchWithAuth<T>(url, {
-      ...options,
-      method: "PATCH",
-      body: JSON.stringify(data),
-    }),
+    fetchWithAuth<T>(
+      url,
+      {
+        ...options,
+        method: "PATCH",
+        body: JSON.stringify(data),
+      },
+      token
+    ),
 
   delete: <T = unknown>(
     url: string,
-    options: RequestOptions = {}
-  ): Promise<T> => fetchWithAuth<T>(url, { ...options, method: "DELETE" }),
+    options: RequestOptions = {},
+    token?: string
+  ): Promise<T> =>
+    fetchWithAuth<T>(url, { ...options, method: "DELETE" }, token),
 };

@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     try {
       const sessionToken = await authApi.login(username, password);
-      setCookie("session-token", sessionToken);
+      setCookie("session-token", sessionToken.sessionId);
       alert("로그인 성공");
       router.replace("/");
     } catch (e) {
