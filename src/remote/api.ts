@@ -35,7 +35,9 @@ async function fetchWithAuth<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    throw new Error(
+      `HTTP error! status: ${response.status}, url: ${fullUrl.toString()}`
+    );
   }
 
   return response.json() as Promise<T>;
