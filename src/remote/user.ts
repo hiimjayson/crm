@@ -19,19 +19,6 @@ export const userApi = {
     return api.get("/user");
   },
   getCurrentUser: async (): Promise<UserResponse> => {
-    return {
-      success: true,
-      data: {
-        id: "dsfsdf",
-        uNumbber: 1,
-        email: "test@test.com",
-        name: "홍길동",
-        team: "영업팀",
-        role: "영업팀장",
-        createdAt: "2024-01-01",
-      },
-    };
-
     return api.get("/user/me");
   },
 };
