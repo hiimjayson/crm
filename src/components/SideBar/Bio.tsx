@@ -26,7 +26,7 @@ export default function Bio() {
     <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 bg-gray-50 p-4">
       <div className="flex items-center justify-between">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-md font-medium text-gray-900">
+          <p className="truncate text-md font-semibold text-gray-900">
             {currentUser.name}
           </p>
           <p className="truncate text-sm text-gray-500">{currentUser.email}</p>
