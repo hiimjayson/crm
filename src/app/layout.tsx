@@ -22,10 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${notoSansKr.className} antialiased`}>
-        <Providers>
-          {/* login 페이지일 때는 SideBar 없이 children만 렌더링 */}
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

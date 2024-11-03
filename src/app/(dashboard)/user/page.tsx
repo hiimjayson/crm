@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { userApi } from "@/remote/user";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 
 function UserList() {
   const { data: users } = useSuspenseQuery({

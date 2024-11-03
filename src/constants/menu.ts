@@ -10,7 +10,7 @@ export const MENU_ITEMS = [
     category: "회원 관리",
     items: [
       { title: "대시보드", href: "/members/dashboard" },
-      { title: "회원 내역", href: "/members/list" },
+      { title: "회원 내역", href: "/customer" },
     ],
   },
   {
