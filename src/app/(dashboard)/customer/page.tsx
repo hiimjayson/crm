@@ -3,11 +3,14 @@
 import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { CustomerList } from "@/components/customer/CustomerList";
+import { DashboardLayoutTemplate } from "@/components/templates/DasyboardLayoutTemplate";
 
 export default function CustomerListPage() {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">회원 내역</h1>
+    <DashboardLayoutTemplate
+      title="회원 내역"
+      description="회원 내역을 관리합니다."
+    >
       <ErrorBoundary
         fallback={
           <div className="p-4 text-red-500">
@@ -19,6 +22,6 @@ export default function CustomerListPage() {
           <CustomerList />
         </Suspense>
       </ErrorBoundary>
-    </div>
+    </DashboardLayoutTemplate>
   );
 }
