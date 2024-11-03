@@ -1,15 +1,18 @@
 import { User } from "@/remote/user";
+import { faker, fakerEN } from "./faker";
 
 export const userFactory = {
   create: (): User => {
     return {
-      id: "1",
-      uNumbber: 1,
-      email: "test@test.com",
-      name: "test",
-      team: "test",
-      role: "test",
-      createdAt: "2024-01-01",
+      id: faker.string.uuid(),
+      uNumbber: faker.number.int(),
+      email: `${fakerEN.person.lastName().toLowerCase()}@${
+        faker.internet.email().split("@")[1]
+      }`,
+      name: faker.person.fullName(),
+      team: faker.company.name(),
+      role: faker.person.jobTitle(),
+      createdAt: faker.date.past().toISOString(),
     };
   },
 };

@@ -20,6 +20,8 @@ export default function Bio() {
 
   if (!currentUser) return null;
 
+  console.log(currentUser);
+
   return (
     <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 bg-gray-50 p-4">
       <div className="flex items-center justify-between">
