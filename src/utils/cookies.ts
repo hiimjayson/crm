@@ -1,45 +1,23 @@
-interface CookieOptions {
-  path?: string;
-  expires?: Date;
-  maxAge?: number;
-  domain?: string;
-  secure?: boolean;
-  sameSite?: "Strict" | "Lax" | "None";
-}
+import {
+  setCookie as setNextCookie,
+  getCookie as getNextCookie,
+  deleteCookie as deleteNextCookie,
+} from "cookies-next";
+import type { OptionsType } from "cookies-next/lib/types";
 
 export const setCookie = (
   name: string,
   value: string,
-  options: CookieOptions = {}
+  options: OptionsType = {}
 ) => {
-  const { path = "/", expires, maxAge, domain, secure, sameSite } = options;
-
-  let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
-
-  if (path) cookieString += `; path=${path}`;
-  if (expires) cookieString += `; expires=${expires.toUTCString()}`;
-  if (maxAge) cookieString += `; max-age=${maxAge}`;
-  if (domain) cookieString += `; domain=${domain}`;
-  if (secure) cookieString += "; secure";
-  if (sameSite) cookieString += `; samesite=${sameSite}`;
-
-  document.cookie = cookieString;
+  setNextCookie(name, value, options);
 };
 
 export const getCookie = (name: string): string | undefined => {
-  const cookies = document.cookie.split(";");
-  for (const cookie of cookies) {
-    const [cookieName, cookieValue] = cookie.split("=").map((c) => c.trim());
-    if (cookieName === encodeURIComponent(name)) {
-      return decodeURIComponent(cookieValue);
-    }
-  }
-  return undefined;
+  const value = getNextCookie(name);
+  return value?.toString();
 };
 
-export const deleteCookie = (name: string, options: CookieOptions = {}) => {
-  setCookie(name, "", {
-    ...options,
-    expires: new Date(0),
-  });
+export const deleteCookie = (name: string, options: OptionsType = {}) => {
+  deleteNextCookie(name, options);
 };

@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { UserRepository } from "@/mock/repositories/user.repository";
 import { ApiResponse } from "./typings";
 
 export interface User {
@@ -16,9 +16,15 @@ type UserResponse = ApiResponse<User>;
 
 export const userApi = {
   getUsers: async (): Promise<UserListResponse> => {
-    return api.get("/user");
+    return {
+      success: true,
+      data: UserRepository.getUsers(),
+    };
   },
   getCurrentUser: async (): Promise<UserResponse> => {
-    return api.get("/user/me");
+    return {
+      success: true,
+      data: UserRepository.getCurrentUser(),
+    };
   },
 };

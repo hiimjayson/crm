@@ -1,4 +1,4 @@
-import { getCookie } from "cookies-next";
+import { getCookie } from "@/utils/cookies";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -36,7 +36,11 @@ async function fetchWithAuth<T>(
 
   if (!response.ok) {
     throw new Error(
-      `HTTP error! status: ${response.status}, url: ${fullUrl.toString()}`
+      `HTTP error! status: ${
+        response.status
+      }, url: ${fullUrl.toString()}, response: ${JSON.stringify(
+        await response.json()
+      )}`
     );
   }
 
