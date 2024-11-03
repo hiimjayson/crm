@@ -38,6 +38,7 @@ const MENU_ITEMS = [
 
 export default function CommandMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [search, setSearch] = useState("");
   const router = useRouter();
 
@@ -64,6 +65,15 @@ export default function CommandMenu() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      setMounted(true);
+    } else {
+      const timer = setTimeout(() => setMounted(false), 200);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   const filteredItems = MENU_ITEMS.map((category) => ({
     ...category,
     items: category.items.filter((item) =>
@@ -76,12 +86,21 @@ export default function CommandMenu() {
     setIsOpen(false);
   };
 
-  if (!isOpen) return null;
+  if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50">
+    <div
+      className={`fixed inset-0 z-50 transition-opacity duration-200 ${
+        isOpen ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      <div className="fixed inset-0 bg-black/50" />
       <div className="fixed left-1/2 top-1/4 w-full max-w-xl -translate-x-1/2 p-4">
-        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl">
+        <div
+          className={`overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 ${
+            isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+          }`}
+        >
           <div className="flex items-center border-b border-gray-200 px-3">
             <Command className="h-5 w-5 text-gray-500" />
             <input
@@ -89,6 +108,7 @@ export default function CommandMenu() {
               placeholder="메뉴 검색..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              autoFocus
             />
             <kbd className="hidden rounded bg-gray-100 px-2 py-1 text-xs font-medium text-gray-500 sm:inline-block">
               ESC
