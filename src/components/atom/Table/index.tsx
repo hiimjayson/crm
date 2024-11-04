@@ -19,7 +19,7 @@ interface TdProps extends HTMLProps<HTMLTableCellElement> {
   className?: string;
 }
 
-function Table({ className = "", children, ...props }: TableProps) {
+export function Table({ className = "", children, ...props }: TableProps) {
   return (
     <div className="overflow-x-auto">
       <table
@@ -83,5 +83,3 @@ Table.Tr = Tr;
 Table.Th = Th;
 Table.TBody = TBody;
 Table.Td = Td;
-
-export default Table;
