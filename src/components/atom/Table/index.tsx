@@ -2,6 +2,7 @@ import { HTMLProps } from "react";
 
 interface TableProps extends HTMLProps<HTMLTableElement> {
   className?: string;
+  horizontalScroll?: boolean;
 }
 interface THeadProps extends HTMLProps<HTMLTableSectionElement> {
   className?: string;
@@ -19,9 +20,16 @@ interface TdProps extends HTMLProps<HTMLTableCellElement> {
   className?: string;
 }
 
-export function Table({ className = "", children, ...props }: TableProps) {
+export function Table({
+  className = "",
+  horizontalScroll = true,
+  children,
+  ...props
+}: TableProps) {
   return (
-    <div className="w-0 min-w-full overflow-x-auto">
+    <div
+      className={`w-0 min-w-full ${horizontalScroll ? "overflow-x-auto" : ""}`}
+    >
       <table className={`min-w-full ${className}`} {...props}>
         {children}
       </table>

@@ -1,9 +1,7 @@
-import { CSSProperties } from "react";
-
 export interface Column {
   key: string;
   title: string;
-  minWidth?: CSSProperties["minWidth"];
+  minWidth?: number;
 }
 
 export interface Row {

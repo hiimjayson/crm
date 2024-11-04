@@ -35,6 +35,7 @@ export function CustomerList() {
           },
         ],
       }))}
+      freezedColumns={2}
     />
   );
 }
