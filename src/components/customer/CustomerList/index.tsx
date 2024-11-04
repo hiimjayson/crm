@@ -12,8 +12,8 @@ export function CustomerList() {
   return (
     <Table
       columns={[
-        { key: "name", title: "이름" },
-        { key: "uNumber", title: "사번" },
+        { key: "name", title: "이름", minWidth: 140 },
+        { key: "uNumber", title: "사번", minWidth: 240 },
         { key: "email", title: "이메일" },
         { key: "email2", title: "이메일" },
         { key: "team", title: "팀" },
