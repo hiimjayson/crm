@@ -21,7 +21,7 @@ interface TdProps extends HTMLProps<HTMLTableCellElement> {
 
 export function Table({ className = "", children, ...props }: TableProps) {
   return (
-    <div className="overflow-x-auto">
+    <div className="w-0 min-w-full overflow-x-auto">
       <table
         className={`min-w-full divide-y divide-gray-200 ${className}`}
         {...props}
@@ -42,7 +42,10 @@ function THead({ className = "", children, ...props }: THeadProps) {
 
 function Tr({ className = "", children, ...props }: TrProps) {
   return (
-    <tr className={`hover:bg-gray-50 ${className}`} {...props}>
+    <tr
+      className={`bg-white hover:bg-gray-50 divide-x divide-y divide-gray-200  ${className}`}
+      {...props}
+    >
       {children}
     </tr>
   );
@@ -51,7 +54,7 @@ function Tr({ className = "", children, ...props }: TrProps) {
 function Th({ className = "", children, ...props }: ThProps) {
   return (
     <th
-      className={`px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${className}`}
+      className={`px-5 py-2 text-left text-lg font-medium text-gray-500 uppercase tracking-wider ${className}`}
       {...props}
     >
       {children}
@@ -61,10 +64,7 @@ function Th({ className = "", children, ...props }: ThProps) {
 
 function TBody({ className = "", children, ...props }: TBodyProps) {
   return (
-    <tbody
-      className={`bg-white divide-y divide-gray-200 ${className}`}
-      {...props}
-    >
+    <tbody className={`${className}`} {...props}>
       {children}
     </tbody>
   );
@@ -72,7 +72,10 @@ function TBody({ className = "", children, ...props }: TBodyProps) {
 
 function Td({ className = "", children, ...props }: TdProps) {
   return (
-    <td className={`px-6 py-4 whitespace-nowrap ${className}`} {...props}>
+    <td
+      className={`px-5 py-2 text-lg text-gray-700 whitespace-nowrap ${className}`}
+      {...props}
+    >
       {children}
     </td>
   );

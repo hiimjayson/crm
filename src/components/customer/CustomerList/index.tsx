@@ -13,14 +13,22 @@ export function CustomerList() {
     <Table
       columns={[
         { key: "name", title: "이름" },
+        { key: "uNumber", title: "사번" },
         { key: "email", title: "이메일" },
+        { key: "email2", title: "이메일" },
+        { key: "team", title: "팀" },
+        { key: "role", title: "권한" },
         { key: "createdAt", title: "가입일" },
       ]}
       rows={users?.map((user) => ({
         key: user.id,
         cells: [
           { key: "name", value: user.name },
+          { key: "uNumber", value: user.uNumbber.toString() },
           { key: "email", value: user.email },
+          { key: "email2", value: user.email },
+          { key: "team", value: user.team },
+          { key: "role", value: user.role },
           {
             key: "createdAt",
             value: kstFormat(new Date(user.createdAt), "yyyy.MM.dd"),
