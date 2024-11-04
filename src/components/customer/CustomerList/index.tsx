@@ -1,7 +1,7 @@
 import { userApi } from "@/remote/user";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { kstFormat } from "@toss/date";
-import Table from "@/components/common/Table";
+import Table from "@/components/atom/Table";
 
 export function CustomerList() {
   const { data: users } = useSuspenseQuery({
