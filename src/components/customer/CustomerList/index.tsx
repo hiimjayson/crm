@@ -2,10 +2,15 @@ import { userApi } from "@/remote/user";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { kstFormat } from "@toss/date";
 import { Table } from "@/components/common/Table";
+import { CustomerFilterValues } from "../CustomerFilter/useCustomerFilter";
 
-export function CustomerList() {
+interface Props {
+  filters: CustomerFilterValues;
+}
+
+export function CustomerList({ filters }: Props) {
   const { data: users } = useSuspenseQuery({
-    queryKey: ["users"],
+    queryKey: ["users", filters],
     queryFn: async () => (await userApi.getUsers())?.data,
   });
 
@@ -15,7 +20,6 @@ export function CustomerList() {
         { key: "name", title: "이름", minWidth: 140 },
         { key: "uNumber", title: "사번", minWidth: 240 },
         { key: "email", title: "이메일" },
-        { key: "email2", title: "이메일" },
         { key: "team", title: "팀" },
         { key: "role", title: "권한" },
         { key: "createdAt", title: "가입일" },
@@ -26,7 +30,6 @@ export function CustomerList() {
           { key: "name", value: user.name },
           { key: "uNumber", value: user.uNumbber.toString() },
           { key: "email", value: user.email },
-          { key: "email2", value: user.email },
           { key: "team", value: user.team },
           { key: "role", value: user.role },
           {
