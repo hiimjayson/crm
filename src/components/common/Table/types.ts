@@ -1,15 +1,15 @@
-export interface Column {
-  key: string;
+export interface Column<Record> {
+  key: keyof Record;
   title: string;
-  minWidth?: number;
+  width?: number;
 }
 
-export interface Row {
+export interface Row<Record> {
   key: string;
-  cells: Cell[];
+  cells: Cell<Record>[];
 }
 
-export interface Cell {
-  key: string;
+export interface Cell<Record> {
+  key: keyof Record;
   value: string;
 }

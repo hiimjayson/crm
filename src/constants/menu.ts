@@ -7,6 +7,10 @@ export const MENU_ITEMS = [
     ],
   },
   {
+    category: "판매 관리",
+    items: [{ title: "주문 내역", href: "/order" }],
+  },
+  {
     category: "회원 관리",
     items: [
       { title: "대시보드", href: "/members/dashboard" },

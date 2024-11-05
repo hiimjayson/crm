@@ -5,7 +5,7 @@ export const userFactory = {
   create: (): User => {
     return {
       id: faker.string.uuid(),
-      uNumbber: faker.number.int(),
+      uNumber: faker.number.int(),
       email: `${fakerEN.person.lastName().toLowerCase()}@${
         faker.internet.email().split("@")[1]
       }`,

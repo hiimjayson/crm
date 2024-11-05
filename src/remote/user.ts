@@ -3,7 +3,7 @@ import { ApiResponse } from "./typings";
 
 export interface User {
   id: string;
-  uNumbber: number;
+  uNumber: number;
   email: string;
   name: string;
   team: string;

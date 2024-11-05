@@ -2,13 +2,17 @@ import { Table as TableBase } from "@/components/atom/Table";
 import { Column, Row } from "./types";
 import { useEffect, useRef, useState } from "react";
 
-interface Props {
-  columns: Column[];
-  rows: Row[];
+interface Props<Record> {
+  columns: Column<Record>[];
+  rows: Row<Record>[];
   freezedColumns?: number;
 }
 
-export function Table({ columns, rows, freezedColumns = 0 }: Props) {
+export function Table<Record = unknown>({
+  columns,
+  rows,
+  freezedColumns = 0,
+}: Props<Record>) {
   const tableRef = useRef<HTMLDivElement>(null);
   const [showLeftGradient, setShowLeftGradient] = useState(false);
   const [showRightGradient, setShowRightGradient] = useState(false);
@@ -49,8 +53,8 @@ export function Table({ columns, rows, freezedColumns = 0 }: Props) {
               <TableBase.Tr>
                 {freezedCols.map((column) => (
                   <TableBase.Th
-                    key={column.key}
-                    style={{ minWidth: column.minWidth }}
+                    key={column.key as string}
+                    style={{ width: column.width ?? 140 }}
                     className="border-r"
                   >
                     {column.title}
@@ -62,7 +66,7 @@ export function Table({ columns, rows, freezedColumns = 0 }: Props) {
               {rows.map((row) => (
                 <TableBase.Tr key={row.key}>
                   {row.cells.slice(0, freezedColumns).map((cell) => (
-                    <TableBase.Td key={cell.key} className="border-r">
+                    <TableBase.Td key={cell.key as string} className="border-r">
                       {cell.value}
                     </TableBase.Td>
                   ))}
@@ -79,8 +83,8 @@ export function Table({ columns, rows, freezedColumns = 0 }: Props) {
             <TableBase.Tr>
               {columns.map((column) => (
                 <TableBase.Th
-                  key={column.key}
-                  style={{ minWidth: column.minWidth }}
+                  key={column.key as string}
+                  style={{ width: column.width ?? 140 }}
                 >
                   {column.title}
                 </TableBase.Th>
@@ -102,7 +106,7 @@ export function Table({ columns, rows, freezedColumns = 0 }: Props) {
             marginLeft:
               freezedColumns > 0
                 ? `${freezedCols.reduce(
-                    (acc, col) => acc + (col.minWidth || 100),
+                    (acc, col) => acc + (col.width || 100),
                     0
                   )}px`
                 : 0,
@@ -116,11 +120,11 @@ export function Table({ columns, rows, freezedColumns = 0 }: Props) {
   );
 }
 
-function TableBodyRow({ row }: { row: Row }) {
+function TableBodyRow<Record>({ row }: { row: Row<Record> }) {
   return (
     <TableBase.Tr>
       {row.cells.map((cell) => (
-        <TableBase.Td key={cell.key}>{cell.value}</TableBase.Td>
+        <TableBase.Td key={cell.key as string}>{cell.value}</TableBase.Td>
       ))}
     </TableBase.Tr>
   );

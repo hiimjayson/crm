@@ -30,7 +30,7 @@ export function Table({
     <div
       className={`w-0 min-w-full ${horizontalScroll ? "overflow-x-auto" : ""}`}
     >
-      <table className={`min-w-full ${className}`} {...props}>
+      <table className={`${className}`} {...props}>
         {children}
       </table>
     </div>
