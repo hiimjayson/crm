@@ -2,10 +2,12 @@
 
 import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
-import { CustomerList } from "@/components/customer/CustomerList";
+import { CustomerList } from "@/components/features/customer/CustomerList";
 import { DashboardLayoutTemplate } from "@/components/templates/DasyboardLayoutTemplate";
-import { CustomerFilter } from "@/components/customer/CustomerFilter";
-import { useCustomerFilter } from "@/components/customer/CustomerFilter/useCustomerFilter";
+import {
+  CustomerFilter,
+  useCustomerFilter,
+} from "@/components/features/customer/CustomerFilter";
 
 export default function CustomerListPage() {
   const { filters, setFilters } = useCustomerFilter();

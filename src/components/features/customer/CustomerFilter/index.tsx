@@ -129,3 +129,5 @@ export function CustomerFilter({ filters, onFiltersChange }: Props) {
     </div>
   );
 }
+
+export * from "./useCustomerFilter";
