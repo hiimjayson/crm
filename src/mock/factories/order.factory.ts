@@ -8,11 +8,11 @@ export const orderFactory = {
   create: (): Order => {
     return {
       id: faker.string.uuid(),
-      orderNumber: faker.string.uuid(),
+      orderNumber: "2411051028300000",
       createdAt: faker.date.past().toISOString(),
       product: productFactory.create(),
       customer: userFactory.create(),
-      option: faker.string.uuid(),
+      option: "블랙 / S",
       orderStatus: getRandomElement(Object.values(OrderStatus)),
     };
   },

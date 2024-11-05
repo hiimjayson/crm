@@ -17,7 +17,7 @@ export function OrderList() {
         { key: "orderStatus", title: "주문상태", width: 100 },
         { key: "product", title: "상품명" },
         { key: "option", title: "옵션" },
-        { key: "createdAt", title: "주문일시" },
+        { key: "createdAt", title: "거래일시" },
       ]}
       rows={orders?.map((order) => ({
         key: order.id,
@@ -30,7 +30,6 @@ export function OrderList() {
           { key: "createdAt", value: order.createdAt },
         ],
       }))}
-      freezedColumns={3}
     />
   );
 }
