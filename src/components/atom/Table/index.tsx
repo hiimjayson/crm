@@ -22,7 +22,10 @@ interface TdProps extends HTMLProps<HTMLTableCellElement> {
 export function Table({ className = "", children, ...props }: TableProps) {
   return (
     <div className={`w-0 min-w-full`}>
-      <table className={`w-full table-fixed ${className}`} {...props}>
+      <table
+        className={`w-full table-fixed border-collapse ${className}`}
+        {...props}
+      >
         {children}
       </table>
     </div>
@@ -31,10 +34,7 @@ export function Table({ className = "", children, ...props }: TableProps) {
 
 function THead({ className = "", children, ...props }: THeadProps) {
   return (
-    <thead
-      className={`bg-gray-50 divide-y divide-gray-200  ${className}`}
-      {...props}
-    >
+    <thead className={`bg-gray-50 ${className}`} {...props}>
       {children}
     </thead>
   );
@@ -43,7 +43,7 @@ function THead({ className = "", children, ...props }: THeadProps) {
 function Tr({ className = "", children, ...props }: TrProps) {
   return (
     <tr
-      className={`bg-white hover:bg-gray-50 divide-x divide-y divide-gray-200  ${className}`}
+      className={`bg-white hover:bg-gray-50 transition-colors ${className}`}
       {...props}
     >
       {children}
@@ -54,7 +54,7 @@ function Tr({ className = "", children, ...props }: TrProps) {
 function Th({ className = "", children, ...props }: ThProps) {
   return (
     <th
-      className={`px-5 py-2 text-left text-lg font-semibold text-gray-400 tracking-wider ${className} text-ellipsis`}
+      className={`pl-4 pr-3 h-10 text-left text-base font-semibold text-gray-400 border-t border-r border-b border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors tracking-wider ${className} text-ellipsis`}
       {...props}
     >
       {children}
@@ -64,7 +64,7 @@ function Th({ className = "", children, ...props }: ThProps) {
 
 function TBody({ className = "", children, ...props }: TBodyProps) {
   return (
-    <tbody className={`divide-y divide-gray-200 ${className}`} {...props}>
+    <tbody className={`${className}`} {...props}>
       {children}
     </tbody>
   );
@@ -73,7 +73,7 @@ function TBody({ className = "", children, ...props }: TBodyProps) {
 function Td({ className = "", children, ...props }: TdProps) {
   return (
     <td
-      className={`px-5 py-2 text-lg text-gray-700 whitespace-nowrap text-ellipsis overflow-hidden ${className}`}
+      className={`pl-4 pr-3 h-11 text-base text-gray-700 border-t border-r border-b border-gray-200 whitespace-nowrap text-ellipsis overflow-hidden ${className}`}
       {...props}
     >
       {children}
