@@ -45,11 +45,8 @@ export function Table<Record = unknown>({
     <div className="relative">
       {freezedColumns > 0 && (
         <div className="absolute left-0 z-20 h-full bg-white">
-          <TableBase
-            horizontalScroll={false}
-            className="border-r border-gray-200"
-          >
-            <TableBase.THead className="z-30 bg-white">
+          <TableBase className="border-r border-gray-200">
+            <TableBase.THead className="bg-white">
               <TableBase.Tr>
                 {freezedCols.map((column) => (
                   <TableBase.Th
@@ -77,9 +74,13 @@ export function Table<Record = unknown>({
         </div>
       )}
 
-      <div ref={tableRef} className="overflow-x-auto" onScroll={checkScroll}>
+      <div
+        ref={tableRef}
+        className="overflow-x-auto z-10"
+        onScroll={checkScroll}
+      >
         <TableBase>
-          <TableBase.THead className="z-10 bg-white">
+          <TableBase.THead className="bg-white">
             <TableBase.Tr>
               {columns.map((column) => (
                 <TableBase.Th

@@ -2,7 +2,6 @@ import { HTMLProps } from "react";
 
 interface TableProps extends HTMLProps<HTMLTableElement> {
   className?: string;
-  horizontalScroll?: boolean;
 }
 interface THeadProps extends HTMLProps<HTMLTableSectionElement> {
   className?: string;
@@ -20,17 +19,10 @@ interface TdProps extends HTMLProps<HTMLTableCellElement> {
   className?: string;
 }
 
-export function Table({
-  className = "",
-  horizontalScroll = true,
-  children,
-  ...props
-}: TableProps) {
+export function Table({ className = "", children, ...props }: TableProps) {
   return (
-    <div
-      className={`w-0 min-w-full ${horizontalScroll ? "overflow-x-auto" : ""}`}
-    >
-      <table className={`${className}`} {...props}>
+    <div className={`w-0 min-w-full`}>
+      <table className={`w-full table-fixed ${className}`} {...props}>
         {children}
       </table>
     </div>
@@ -62,7 +54,7 @@ function Tr({ className = "", children, ...props }: TrProps) {
 function Th({ className = "", children, ...props }: ThProps) {
   return (
     <th
-      className={`px-5 py-2 text-left text-lg font-semibold text-gray-400 uppercase tracking-wider ${className}`}
+      className={`px-5 py-2 text-left text-lg font-semibold text-gray-400 tracking-wider ${className} text-ellipsis`}
       {...props}
     >
       {children}
@@ -81,7 +73,7 @@ function TBody({ className = "", children, ...props }: TBodyProps) {
 function Td({ className = "", children, ...props }: TdProps) {
   return (
     <td
-      className={`px-5 py-2 text-lg text-gray-700 whitespace-nowrap ${className}`}
+      className={`px-5 py-2 text-lg text-gray-700 whitespace-nowrap text-ellipsis overflow-hidden ${className}`}
       {...props}
     >
       {children}
