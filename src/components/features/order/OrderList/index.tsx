@@ -1,5 +1,5 @@
 import { Table } from "@/components/common/Table";
-import { Order } from "@/model/order";
+import { Order, OrderStatus } from "@/model/order";
 import { orderApi } from "@/remote/order";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
@@ -12,9 +12,19 @@ export function OrderList() {
   return (
     <Table<Order>
       columns={[
-        { key: "orderNumber", title: "주문번호", width: 200 },
-        { key: "customer", title: "고객명", width: 140 },
-        { key: "orderStatus", title: "주문상태", width: 100 },
+        { key: "orderNumber", title: "주문번호", width: 140 },
+        { key: "customer", title: "고객명", width: 70 },
+        {
+          key: "orderStatus",
+          title: "주문상태",
+          width: 70,
+          component: "chip",
+          variants: [
+            { color: "green", value: OrderStatus.COMPLETED, label: "완료" },
+            { color: "red", value: OrderStatus.CANCELLED, label: "취소" },
+            { color: "gray", value: OrderStatus.PENDING, label: "대기" },
+          ],
+        },
         { key: "product", title: "상품명" },
         { key: "option", title: "옵션" },
         { key: "createdAt", title: "거래일시" },

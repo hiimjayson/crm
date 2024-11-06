@@ -54,7 +54,7 @@ function Tr({ className = "", children, ...props }: TrProps) {
 function Th({ className = "", children, ...props }: ThProps) {
   return (
     <th
-      className={`pl-4 pr-3 h-10 text-left text-base font-semibold text-gray-400 border-t border-r border-b border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors tracking-wider ${className} text-ellipsis`}
+      className={`pl-4 pr-3 h-10 text-left text-base font-semibold text-gray-500 border-t border-r border-b border-gray-300 bg-gray-50 hover:bg-gray-100 transition-colors tracking-wider ${className} text-ellipsis`}
       {...props}
     >
       {children}

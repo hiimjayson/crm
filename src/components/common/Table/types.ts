@@ -1,15 +1,24 @@
-import { Chip } from "@/components/atom/Chip";
-import { ComponentProps } from "react";
+export type ColumnComponent = "text" | "chip";
+
+export type ColumnVariantColor =
+  | "gray"
+  | "red"
+  | "green"
+  | "blue"
+  | "yellow"
+  | "purple";
 
 export interface Column<Record> {
   key: keyof Record;
   title: string;
 
+  component?: ColumnComponent;
   width?: number;
-  chipVariant?: {
-    color: ComponentProps<typeof Chip>["color"];
+  variants?: {
+    color: ColumnVariantColor;
+    label?: string;
     value: string;
-  };
+  }[];
 }
 
 export interface Row<Record> {

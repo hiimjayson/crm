@@ -1,6 +1,8 @@
 import { Table as TableBase } from "@/components/atom/Table";
-import { Column, Row } from "./types";
+import { Cell, Column, Row } from "./types";
 import { useEffect, useRef, useState } from "react";
+import { Chip } from "@/components/atom/Chip";
+import { getColumnColorText } from "./utils";
 
 interface Props<Record> {
   columns: Column<Record>[];
@@ -56,7 +58,7 @@ export function Table<Record = unknown>({ columns, rows }: Props<Record>) {
           </TableBase.THead>
           <TableBase.TBody>
             {rows.map((row) => (
-              <TableBodyRow key={row.key} row={row} />
+              <TableBodyRow key={row.key} row={row} columns={columns} />
             ))}
           </TableBase.TBody>
         </TableBase>
@@ -72,11 +74,45 @@ export function Table<Record = unknown>({ columns, rows }: Props<Record>) {
   );
 }
 
-function TableBodyRow<Record>({ row }: { row: Row<Record> }) {
+function TableBodyRow<Record>({
+  row,
+  columns,
+}: {
+  row: Row<Record>;
+  columns: Column<Record>[];
+}) {
+  const visibleCells = columns
+    .map((column) => ({
+      cell: row.cells.find((cell) => cell.key === column.key),
+      column,
+    }))
+    .filter((x) => x.cell != null);
+
+  const renderCellValue = (cell: Cell<Record>, column: Column<Record>) => {
+    if (column.variants) {
+      const variant = column.variants.find((x) => x.value === cell.value);
+      const value = variant?.label ?? cell.value;
+
+      if (column.component === "chip") {
+        return <Chip color={variant?.color}>{value}</Chip>;
+      } else {
+        return (
+          <p className={`font-medium ${getColumnColorText(variant?.color)}`}>
+            {value}
+          </p>
+        );
+      }
+    }
+
+    return cell.value;
+  };
+
   return (
     <TableBase.Tr>
-      {row.cells.map((cell) => (
-        <TableBase.Td key={cell.key as string}>{cell.value}</TableBase.Td>
+      {visibleCells.map(({ cell, column }) => (
+        <TableBase.Td key={cell!.key as string}>
+          {renderCellValue(cell!, column)}
+        </TableBase.Td>
       ))}
     </TableBase.Tr>
   );
