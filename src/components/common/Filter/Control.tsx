@@ -2,7 +2,7 @@ interface SectionProps {
   children: React.ReactNode;
 }
 function Section({ children }: SectionProps) {
-  return <ul className="w-full px-8 py-6 bg-gray-50">{children}</ul>;
+  return <ul className="w-full px-8 py-6 bg-gray-50 space-y-5">{children}</ul>;
 }
 
 interface ItemProps {

@@ -10,7 +10,7 @@ export function Input({ className, left, ...props }: Props) {
 
   return (
     <div
-      className="flex items-center justify-center w-full h-10 px-4 py-2 border border-gray-300 rounded-sm data-[focus=true]:border-blue-500 data-[hover=true]:border-blue-500 transition-colors"
+      className="flex items-center justify-center w-full max-w-[300px] h-10 px-4 py-2 border border-gray-300 rounded-sm data-[focus=true]:border-blue-500 data-[hover=true]:border-blue-500 transition-colors"
       data-focus={focus}
       data-hover={hover}
     >

@@ -1,4 +1,4 @@
-import { Select } from "@/components/common/Select";
+import { Select } from "@/components/atom/Select";
 import { DateRangePicker } from "@/components/common/DateRangePicker";
 import { CustomerFilterValues } from "./useCustomerFilter";
 
