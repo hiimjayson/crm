@@ -11,9 +11,13 @@ interface ItemProps {
 }
 function Item({ label, children }: ItemProps) {
   return (
-    <li className="flex items-start w-full gap-2">
-      <p className="w-[170px] m-2 text-sm font-medium text-gray-600">{label}</p>
-      {children}
+    <li className="flex w-full">
+      <label className="flex items-start w-full gap-2">
+        <p className="w-[170px] m-2 text-sm font-medium text-gray-600">
+          {label}
+        </p>
+        {children}
+      </label>
     </li>
   );
 }
