@@ -72,7 +72,10 @@ export const CommandMenu = forwardRef<CommandMenuHandle>(
           isOpen ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="fixed inset-0 bg-black/50" />
+        <div
+          className="fixed inset-0 bg-black/50"
+          onClick={() => setIsOpen(false)}
+        />
         <div className="fixed left-1/2 top-1/4 w-full max-w-xl -translate-x-1/2 p-4">
           <div
             className={`overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 ${
