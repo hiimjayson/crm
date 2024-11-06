@@ -38,7 +38,6 @@ export function CustomerList({ filters }: Props) {
           },
         ],
       }))}
-      freezedColumns={2}
     />
   );
 }
