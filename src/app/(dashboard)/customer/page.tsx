@@ -17,7 +17,7 @@ export default function CustomerListPage() {
       title="회원 내역"
       description="시스템에 등록된 모든 회원 정보를 조회합니다."
     >
-      <div className="space-y-4">
+      <div className="space-y-8">
         <CustomerFilter filters={filters} onFiltersChange={setFilters} />
         <ErrorBoundary
           fallback={

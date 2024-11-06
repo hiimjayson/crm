@@ -13,7 +13,7 @@ export function DashboardLayoutTemplate({
   children,
 }: Props) {
   return (
-    <main className="flex-1 overflow-y-auto bg-gray-50 px-10 py-8">
+    <main className="flex-1 overflow-y-auto bg-gray-100 px-10 py-20">
       <div className="flex flex-row justify-between items-center mb-10">
         <h1 className="text-4xl font-bold">
           {title}
