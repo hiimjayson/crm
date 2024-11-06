@@ -22,8 +22,8 @@ export function CustomerFilter({ filters, onFiltersChange }: Props) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow space-y-4">
-      <div className="grid grid-cols-2 gap-4">
+    <div className="bg-white rounded-lg shadow space-y-4 pb-4">
+      <div className="bg-gray-50 p-6 grid grid-cols-2 gap-4">
         <div>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
@@ -121,7 +121,7 @@ export function CustomerFilter({ filters, onFiltersChange }: Props) {
             // 적용 로직
             // 이미 실시간으로 적용되고 있으므로 추가 작업 불필요
           }}
-          className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+          className="px-4 py-2 text-white font-bold bg-blue-500 rounded hover:bg-blue-700 transition-colors"
         >
           적용
         </button>
