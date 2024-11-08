@@ -1,6 +1,6 @@
 import { Select } from "@/components/atom/Select";
-import { DateRangePicker } from "@/components/common/DateRangePicker";
 import { CustomerFilterValues } from "./useCustomerFilter";
+import { DatePicker } from "@/components/atom/DateRangePicker";
 
 interface Props {
   filters: CustomerFilterValues;
@@ -44,18 +44,18 @@ export function CustomerFilter({ filters, onFiltersChange }: Props) {
             </div>
             <div className="flex items-center gap-4">
               <label className="w-24 font-medium">등록일</label>
-              <DateRangePicker
+              <DatePicker
                 value={filters.registrationDateRange}
-                onChange={(value) =>
+                onRangeChange={(value) =>
                   handleChange("registrationDateRange", value)
                 }
               />
             </div>
             <div className="flex items-center gap-4">
               <label className="w-24 font-medium">설치일</label>
-              <DateRangePicker
+              <DatePicker
                 value={filters.installationDateRange}
-                onChange={(value) =>
+                onRangeChange={(value) =>
                   handleChange("installationDateRange", value)
                 }
               />
@@ -74,23 +74,25 @@ export function CustomerFilter({ filters, onFiltersChange }: Props) {
             </div>
             <div className="flex items-center gap-4">
               <label className="w-24 font-medium">Arrival Date</label>
-              <DateRangePicker
+              <DatePicker
                 value={filters.arrivalDate}
-                onChange={(value) => handleChange("arrivalDate", value)}
+                onRangeChange={(value) => handleChange("arrivalDate", value)}
               />
             </div>
             <div className="flex items-center gap-4">
               <label className="w-24 font-medium">기본워런티</label>
-              <DateRangePicker
+              <DatePicker
                 value={filters.baseWarrantyRange}
-                onChange={(value) => handleChange("baseWarrantyRange", value)}
+                onRangeChange={(value) =>
+                  handleChange("baseWarrantyRange", value)
+                }
               />
             </div>
             <div className="flex items-center gap-4">
               <label className="w-24 font-medium">추가워런티</label>
-              <DateRangePicker
+              <DatePicker
                 value={filters.extendedWarrantyRange}
-                onChange={(value) =>
+                onRangeChange={(value) =>
                   handleChange("extendedWarrantyRange", value)
                 }
               />

@@ -1,10 +1,12 @@
+import { XCircle } from "lucide-react";
 import { useState } from "react";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   left?: React.ReactNode;
+  right?: React.ReactNode;
   className?: string;
 }
-export function Input({ className, left, ...props }: Props) {
+export function Input({ className, left, right, ...props }: Props) {
   const [focus, setFocus] = useState(false);
   const [hover, setHover] = useState(false);
 
@@ -23,6 +25,17 @@ export function Input({ className, left, ...props }: Props) {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       />
+      {right != null ? <div className="ml-2">{right}</div> : null}
     </div>
   );
 }
+
+Input.ClearIcon = function ClearIcon() {
+  return (
+    <XCircle
+      fill="currentColor"
+      stroke="white"
+      className="size-6 text-gray-400"
+    />
+  );
+};
