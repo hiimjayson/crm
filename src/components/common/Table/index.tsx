@@ -37,7 +37,7 @@ export function Table<Record = unknown>({ columns, rows }: Props<Record>) {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative bg-white shadow-md">
       <div
         ref={tableRef}
         className="overflow-x-auto z-10"

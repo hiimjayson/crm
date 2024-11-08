@@ -13,7 +13,7 @@ export function Filter() {
   ]);
 
   return (
-    <section className="flex flex-col items-center w-full space-y-4 pb-4 bg-white shadow">
+    <section className="flex flex-col items-center w-full space-y-4 pb-4 bg-white shadow-md">
       <Control.Section>
         <Control.Item label="검색어">
           <Input
