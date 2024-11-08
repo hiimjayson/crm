@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function SideBar() {
   return (
     <>
-      <nav className="relative w-64 bg-white border-r border-gray-200 h-screen">
+      <nav className="relative w-64 bg-white border-r border-gray-400 h-screen">
         <Link href="/">
           <p className="text-2xl font-bold mt-8 mb-6 ml-4 select-none">Logo</p>
         </Link>

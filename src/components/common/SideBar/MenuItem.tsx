@@ -16,7 +16,7 @@ export default function MenuItem({ href, children }: MenuItemProps) {
     <Link
       href={href}
       className={`block pl-6 pr-4 py-2 text-md ${
-        isActive ? "text-blue-600 font-bold" : "text-gray-500"
+        isActive ? "text-blue-600 font-bold" : "text-gray-600"
       } transition-colors hover:bg-gray-100`}
     >
       {children}

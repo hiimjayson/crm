@@ -14,7 +14,7 @@ export default function Section({ title, children }: SectionProps) {
   return (
     <div className="border-b border-gray-200">
       <button
-        className="flex w-full items-center justify-between px-4 py-3 text-lg font-bold text-gray-700 transition-colors hover:text-gray-900 hover:bg-gray-100"
+        className="flex w-full items-center justify-between px-4 py-3 text-lg font-bold text-gray-800 transition-colors hover:text-gray-900 hover:bg-gray-100"
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}

@@ -13,7 +13,7 @@ function Item({ label, children }: ItemProps) {
   return (
     <li className="flex w-full">
       <label className="flex items-start w-full gap-2">
-        <p className="w-[170px] m-2 text-sm font-medium text-gray-600">
+        <p className="w-[170px] m-2 text-sm font-semibold text-gray-700">
           {label}
         </p>
         {children}

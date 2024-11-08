@@ -12,13 +12,13 @@ export function Input({ className, left, right, ...props }: Props) {
 
   return (
     <div
-      className="flex items-center justify-center w-full max-w-[300px] h-10 px-4 py-2 border border-gray-300 rounded-sm data-[focus=true]:border-blue-500 data-[hover=true]:border-blue-500 transition-colors"
+      className="flex items-center justify-center w-full max-w-[300px] h-10 px-4 py-2 border border-gray-400 rounded-lg data-[focus=true]:border-blue-500 data-[hover=true]:border-blue-500 transition-colors"
       data-focus={focus}
       data-hover={hover}
     >
       {left != null ? <div className="mr-2">{left}</div> : null}
       <input
-        className={`flex flex-1 outline-none text-sm text-gray-600 ${className}`}
+        className={`flex flex-1 outline-none text-sm text-gray-700 placeholder:text-gray-500 ${className}`}
         {...props}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}

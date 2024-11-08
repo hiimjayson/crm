@@ -9,7 +9,7 @@ export function Select({ value, options, onChange }: Props) {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="w-full max-w-[300px] px-3 h-10 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors text-sm text-gray-600"
+      className="w-full max-w-[300px] px-3 h-10 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors text-sm text-gray-700"
     >
       {options.map((option) => (
         <option key={option} value={option}>
