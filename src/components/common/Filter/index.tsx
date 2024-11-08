@@ -5,12 +5,14 @@ import { Select } from "@/components/atom/Select";
 import { DatePicker } from "@/components/atom/DateRangePicker";
 import { useState } from "react";
 import { Nullable } from "@/types/nil";
+import { Checkbox } from "@/components/atom/Checkbox";
 
 export function Filter() {
   const [dateRange, setDateRange] = useState<[Nullable<Date>, Nullable<Date>]>([
     null,
     null,
   ]);
+  const [purchaseConfirmed, setPurchaseConfirmed] = useState(false);
 
   return (
     <section className="flex flex-col items-center w-full space-y-4 pb-4 bg-white shadow-md">
@@ -34,6 +36,11 @@ export function Filter() {
             onRangeChange={setDateRange}
             placeholder="주문일자 기간선택"
           />
+        </Control.Item>
+        <Control.Item label="구매확정여부">
+          <Checkbox checked={purchaseConfirmed} onChange={setPurchaseConfirmed}>
+            완료
+          </Checkbox>
         </Control.Item>
       </Control.Section>
       <div className="flex items-center gap-2">
