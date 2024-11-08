@@ -15,11 +15,24 @@ import {
   FilterSelectItemType,
 } from "./types";
 import { SwitchCase } from "@toss/react";
+import { FilterChangeHandler } from "./useFilterItems";
 
 interface Props {
   items: FilterItem[];
+  onChange: FilterChangeHandler;
+  onClear: () => void;
+  onApply: () => void;
+  isDirty: boolean;
+  isClearable: boolean;
 }
-export function Filter({ items }: Props) {
+export function Filter({
+  items,
+  onChange,
+  onClear,
+  onApply,
+  isDirty,
+  isClearable,
+}: Props) {
   return (
     <section className="flex flex-col items-center w-full space-y-4 pb-4 bg-white shadow-md">
       <Control.Section>
@@ -30,10 +43,11 @@ export function Filter({ items }: Props) {
               caseBy={{
                 [FilterItemType.INPUT]: (
                   <Input
+                    name={item.name}
                     left={<Search className="size-4" />}
                     placeholder={`${item.label}을(를) 입력해주세요.`}
                     value={(item as FilterInputItemType).value}
-                    onChange={() => {}}
+                    onChange={(e) => onChange(item.name, e.target.value)}
                   />
                 ),
                 [FilterItemType.SELECT]: (
@@ -45,25 +59,25 @@ export function Filter({ items }: Props) {
                         value: variant.value,
                       })
                     )}
-                    onChange={() => {}}
+                    onChange={(value) => onChange(item.name, value)}
                   />
                 ),
                 [FilterItemType.DATE]: (
                   <DatePicker
                     value={(item as FilterDateItemType).value}
-                    onChange={() => {}}
+                    onChange={(value) => onChange(item.name, value)}
                   />
                 ),
                 [FilterItemType.DATE_RANGE]: (
                   <DatePicker
                     value={(item as FilterDateRangeItemType).value}
-                    onRangeChange={() => {}}
+                    onRangeChange={(value) => onChange(item.name, value)}
                   />
                 ),
                 [FilterItemType.CHECKBOX]: (
                   <Checkbox
                     checked={(item as FilterCheckboxItemType).value}
-                    onChange={() => {}}
+                    onChange={(value) => onChange(item.name, value)}
                   />
                 ),
               }}
@@ -72,10 +86,21 @@ export function Filter({ items }: Props) {
         ))}
       </Control.Section>
       <div className="flex items-center gap-2">
-        <Button variant="secondary" left={<RefreshCcw className="size-4" />}>
+        <Button
+          variant="secondary"
+          left={<RefreshCcw className="size-4" />}
+          disabled={!isClearable}
+          onClick={onClear}
+        >
           초기화
         </Button>
-        <Button left={<Check className="size-4" />}>적용하기</Button>
+        <Button
+          left={<Check className="size-4" />}
+          disabled={!isDirty}
+          onClick={onApply}
+        >
+          적용하기
+        </Button>
       </div>
     </section>
   );

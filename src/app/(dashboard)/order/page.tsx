@@ -4,16 +4,19 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/common/ErrorBoundary";
 import { DashboardLayoutTemplate } from "@/components/templates/DasyboardLayoutTemplate";
 import { OrderList } from "@/components/features/order/OrderList";
-import { OrderFilter } from "@/components/features/order/OrderFilter";
+import { useOrderFilterProps } from "@/components/features/order/OrderFilter/useOrderFilterProps";
+import { Filter } from "@/components/common/Filter";
 
 export default function OrderListPage() {
+  const { filterProps } = useOrderFilterProps();
+
   return (
     <DashboardLayoutTemplate
       title="주문 내역"
       description="카페24 쇼핑몰의 주문내역이 연동되어 보여집니다."
     >
       <div className="space-y-4">
-        <OrderFilter />
+        <Filter {...filterProps} />
 
         <ErrorBoundary
           fallback={
