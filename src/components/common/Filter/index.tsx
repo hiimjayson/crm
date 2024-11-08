@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Check, RefreshCcw, Search } from "lucide-react";
 import { Control } from "./Control";
 import { Input } from "@/components/atom/Input";
 import { Select } from "@/components/atom/Select";
@@ -6,6 +6,7 @@ import { DatePicker } from "@/components/atom/DateRangePicker";
 import { useState } from "react";
 import { Nullable } from "@/types/nil";
 import { Checkbox } from "@/components/atom/Checkbox";
+import { Button } from "@/components/atom/Button";
 
 export function Filter() {
   const [dateRange, setDateRange] = useState<[Nullable<Date>, Nullable<Date>]>([
@@ -44,7 +45,10 @@ export function Filter() {
         </Control.Item>
       </Control.Section>
       <div className="flex items-center gap-2">
-        <button>안녕</button>
+        <Button variant="secondary" left={<RefreshCcw className="size-4" />}>
+          초기화
+        </Button>
+        <Button left={<Check className="size-4" />}>적용하기</Button>
       </div>
     </section>
   );
