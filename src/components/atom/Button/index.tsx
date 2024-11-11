@@ -19,7 +19,7 @@ export function Button({
 }: Props) {
   return (
     <button
-      className={`flex items-center gap-2 font-semibold py-2 px-4 rounded-md border transition-colors ${getVariantStyle(
+      className={`flex items-center gap-2 font-semibold py-2 px-4 rounded-md border transition-all ${getVariantStyle(
         variant,
         outline
       )} ${props.disabled ? "opacity-50 cursor-not-allowed" : ""}`}
@@ -35,7 +35,7 @@ function getVariantStyle(variant: ButtonVariant, outline: boolean) {
   return match(variant)
     .with("primary", () =>
       outline
-        ? "border-blue-200 bg-blue-50 hover:bg-blue-100 text-blue-600"
+        ? "border-blue-200 bg-white hover:bg-blue-50 text-blue-700"
         : "border-blue-600 bg-blue-600 hover:bg-blue-700 text-white"
     )
     .with("secondary", () =>
@@ -45,7 +45,7 @@ function getVariantStyle(variant: ButtonVariant, outline: boolean) {
     )
     .with("danger", () =>
       outline
-        ? "border-red-200 bg-red-50 hover:bg-red-100 text-red-600"
+        ? "border-red-200 bg-white hover:bg-red-50 text-red-600"
         : "border-red-600 bg-red-600 hover:bg-red-700 text-white"
     )
     .exhaustive();
