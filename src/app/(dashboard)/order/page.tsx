@@ -6,6 +6,7 @@ import { DashboardLayoutTemplate } from "@/components/templates/DasyboardLayoutT
 import { OrderList } from "@/components/features/order/OrderList";
 import { useOrderFilterProps } from "@/components/features/order/OrderFilter/useOrderFilterProps";
 import { Filter } from "@/components/common/Filter";
+import { ActionBar } from "@/components/common/ActionBar";
 
 export default function OrderListPage() {
   const { filterProps } = useOrderFilterProps();
@@ -26,6 +27,20 @@ export default function OrderListPage() {
           }
         >
           <Suspense fallback={<div className="p-4">로딩 중...</div>}>
+            <ActionBar
+              actions={[
+                {
+                  name: "export",
+                  label: "내보내기",
+                  buttonVariant: "primary",
+                },
+                {
+                  name: "cancel",
+                  label: "취소",
+                  buttonVariant: "danger",
+                },
+              ]}
+            />
             <OrderList />
           </Suspense>
         </ErrorBoundary>
