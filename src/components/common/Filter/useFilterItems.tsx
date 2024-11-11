@@ -44,8 +44,8 @@ export function useFilterProps(options: FilterItemOption[]) {
   const isDirty = useMemo(() => {
     return items.some(
       (item) =>
-        appliedValues[item.name] != null &&
-        !compareItemValue(item.value, appliedValues[item.name])
+        !compareItemValue(item.value, appliedValues[item.name]) &&
+        !compareItemValue(item.value, getFilterItemDefaultValue(item))
     );
   }, [items, appliedValues]);
 
